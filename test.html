@@ -8,6 +8,9 @@
       .red-color {
         color: red;
       }
+      .green-color {
+        color: green;
+      }
       .linethrough {
         text-decoration: line-through;
       }
@@ -21,6 +24,13 @@
       <h1 v-else-if="fruit == 'orange'">I am orange</h1>
       <h1 v-else>No fruits</h1>
       <h1 v-show="status">OK</h1>
+      <button @click="clickMe()">Click Me</button>
+      <h1>{{number}}</h1>
+      <button @click="dec()">Decrease</button>
+      <button @click="inc()">Increase</button>
+      <p v-if="number < 0" :class="textRed">It is minus number</p>
+      <p v-if="number == 0">It is equal number</p>
+      <p v-if="number > 0" :class="textGreen">It is plus number</p>
     </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
@@ -30,9 +40,22 @@
       data: {
         message: "Hello Vue",
         textRed: "red-color",
+        textGreen: "green-color",
         lineThrough: "linethrough",
         status: true,
         fruit: "apple",
+        number: 0,
+      },
+      methods: {
+        clickMe: function () {
+          alert("hello event");
+        },
+        dec() {
+          this.number--;
+        },
+        inc() {
+          this.number++;
+        },
       },
     });
   </script>
