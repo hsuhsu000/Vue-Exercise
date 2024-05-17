@@ -18,13 +18,13 @@
   </head>
   <body>
     <div id="app">
-      <input type="text" v-model="message" />
-      <h1 v-bind:class="[textRed,lineThrough]">{{message}}</h1>
+      <input type="text" v-model="message" v-on:keyup.enter="send()" />
+      <!-- <h1 v-bind:class="[textRed,lineThrough]">{{message}}</h1> -->
       <h1 v-if="fruit == 'apple'">I am apple</h1>
       <h1 v-else-if="fruit == 'orange'">I am orange</h1>
       <h1 v-else>No fruits</h1>
       <h1 v-show="status">OK</h1>
-      <button @click="clickMe()">Click Me</button>
+      <button @click="show()">Show Message</button>
       <h1>{{number}}</h1>
       <button @click="dec()">Decrease</button>
       <button @click="inc()">Increase</button>
@@ -38,7 +38,7 @@
     var app = new Vue({
       el: "#app",
       data: {
-        message: "Hello Vue",
+        message: "",
         textRed: "red-color",
         textGreen: "green-color",
         lineThrough: "linethrough",
@@ -47,8 +47,8 @@
         number: 0,
       },
       methods: {
-        clickMe: function () {
-          alert("hello event");
+        show() {
+          alert(this.message);
         },
         dec() {
           this.number--;
