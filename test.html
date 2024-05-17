@@ -25,12 +25,28 @@
       <h1 v-else>No fruits</h1>
       <h1 v-show="status">OK</h1>
       <button @click="show()">Show Message</button>
+      <h1>Message Length - {{getLength}}</h1>
       <h1>{{number}}</h1>
       <button @click="dec()">Decrease</button>
       <button @click="inc()">Increase</button>
       <p v-if="number < 0" :class="textRed">It is minus number</p>
       <p v-if="number == 0">It is equal number</p>
       <p v-if="number > 0" :class="textGreen">It is plus number</p>
+      <hr />
+      <h1>Looping</h1>
+      <p v-for="num in arrayNum">{{num}}</p>
+      <table border="1">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Gender</th>
+        </tr>
+        <tr v-for="item in items">
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.gender}}</td>
+        </tr>
+      </table>
     </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
@@ -45,6 +61,24 @@
         status: true,
         fruit: "apple",
         number: 0,
+        arrayNum: ["one", "two", "three"],
+        items: [
+          {
+            id: "1",
+            name: "Hsu",
+            gender: "female",
+          },
+          {
+            id: "2",
+            name: "paw",
+            gender: "male",
+          },
+        ],
+      },
+      computed: {
+        getLength() {
+          return this.message.length;
+        },
       },
       methods: {
         show() {
