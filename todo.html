@@ -13,7 +13,11 @@
         placeholder="Enter Task Name"
         v-model="Data.name"
       /><br />
+      <small style="color: red" v-if="validation.nameStatus">Required!</small
+      ><br />
       <input type="text" placeholder="Remark" v-model="Data.remark" /><br />
+      <small style="color: red" v-if="validation.remarkStatus">Required!</small
+      ><br />
       <button @click="create()">Add</button>
       <hr />
       <table border="1">
@@ -40,14 +44,29 @@
           remark: "",
         },
         items: [],
+        validation: {
+          nameStatus: false,
+          remarkStatus: false,
+        },
       },
       methods: {
         create() {
-          this.items.push({
-            id: this.items.length + 1,
-            name: this.Data.name,
-            remark: this.Data.remark,
-          });
+          this.validationCheck();
+          if (!this.validation.nameStatus && !this.validation.remarkStatus) {
+            this.items.push({
+              id: this.items.length + 1,
+              name: this.Data.name,
+              remark: this.Data.remark,
+            });
+            this.clear();
+          }
+        },
+        validationCheck() {
+          //default is false so dont show,if condition is true >> default value false is changed to true so show message
+          this.validation.nameStatus = this.Data.name == "" ? true : false;
+          this.validation.remarkStatus = this.Data.remark == "" ? true : false;
+        },
+        clear() {
           (this.Data.name = ""), (this.Data.remark = "");
         },
       },
