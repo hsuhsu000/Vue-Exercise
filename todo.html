@@ -52,6 +52,7 @@
       methods: {
         create() {
           this.validationCheck();
+          //only work when validationcheck is false
           if (!this.validation.nameStatus && !this.validation.remarkStatus) {
             this.items.push({
               id: this.items.length + 1,
