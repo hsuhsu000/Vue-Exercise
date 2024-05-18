@@ -105,6 +105,7 @@
           operatorStatus: false,
         },
         histories: [],
+        saveStatus: false,
       },
       methods: {
         calculate() {
@@ -121,6 +122,7 @@
             ${this.userInput.operators}
             ${this.userInput.secondNumber} = ${result}
           `;
+            this.saveStatus = true;
             this.clearForm();
           }
         },
@@ -138,13 +140,19 @@
             (this.userInput.operators = "");
         },
         cleanForm() {
+          this.validation.firstNumberStatus = false;
+          this.validation.secondNumberStatus = false;
+          this.validation.operatorStatus = false;
           this.answer = 0;
           this.histories = [];
           this.clearForm();
         },
         save() {
-          this.histories.push(this.answer);
-          this.answer = 0;
+          if (this.saveStatus) {
+            this.histories.push(this.answer);
+            this.answer = 0;
+          }
+          this.saveStatus = false;
         },
         operation() {
           let num1 = parseInt(this.userInput.firstNumber);
