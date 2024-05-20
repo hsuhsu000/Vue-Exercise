@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import AllListPage from "../views/myList/AllList.vue";
+import errorPage from "../views/myList/404_page.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
@@ -8,7 +9,7 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView,
   },
   {
-    path: "/about",
+    path: "/about/:x/:y",
     name: "about",
     component: () => import("../views/AboutView.vue"),
   },
@@ -16,6 +17,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/allList",
     name: "allList",
     component: AllListPage,
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "errorPage",
+    component: errorPage,
   },
 ];
 
