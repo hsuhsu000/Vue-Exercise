@@ -9,7 +9,7 @@ const routes: Array<RouteRecordRaw> = [
     name: "home",
     component: HomeView,
     beforeEnter: (to, from, next) => {
-      if (from.name == "loginPage") {
+      if (localStorage.getItem("vueAuth") == "true") {
         next();
       } else {
         next("loginPage");
