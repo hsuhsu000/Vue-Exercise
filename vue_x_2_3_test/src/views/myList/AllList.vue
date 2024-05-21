@@ -1,17 +1,18 @@
 <template>
   <div>
-    <h1>{{ title }}</h1>
-    <h1>
-      <SingleListVue titleText="title1" :paraText="1"></SingleListVue>
-    </h1>
+    <h1>To Do List Page</h1>
+    <li class="list-group-item col-6 offset-3">
+      <SingleList></SingleList>
+      <SingleList></SingleList>
+    </li>
   </div>
 </template>
 
 <script>
-import SingleListVue from "./SingleList.vue";
+import SingleList from "./SingleList.vue";
 export default {
   name: "AllList",
-  components: { SingleListVue },
+  components: { SingleList },
 };
 </script>
 

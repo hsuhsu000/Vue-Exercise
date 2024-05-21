@@ -19,6 +19,16 @@ const routes: Array<RouteRecordRaw> = [
     component: AllListPage,
   },
   {
+    path: "/todoAllList",
+    name: "todoAllList",
+    component: AllListPage,
+  },
+  {
+    path: "/todoEachList",
+    name: "todoEachList",
+    component: () => import("../views/myList/SingleList.vue"),
+  },
+  {
     path: "/:pathMatch(.*)*",
     name: "errorPage",
     component: errorPage,
