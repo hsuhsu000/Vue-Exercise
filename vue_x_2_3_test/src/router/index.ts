@@ -2,11 +2,24 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import AllListPage from "../views/myList/AllList.vue";
 import errorPage from "../views/myList/404_page.vue";
+import loginPage from "../views/LoginPage.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "home",
     component: HomeView,
+    beforeEnter: (to, from, next) => {
+      if (from.name == "loginPage") {
+        next();
+      } else {
+        next("loginPage");
+      }
+    },
+  },
+  {
+    path: "/loginPage",
+    name: "loginPage",
+    component: loginPage,
   },
   {
     path: "/about",
