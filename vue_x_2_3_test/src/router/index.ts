@@ -9,7 +9,7 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView,
   },
   {
-    path: "/about/:x/:y",
+    path: "/about",
     name: "about",
     component: () => import("../views/AboutView.vue"),
   },
