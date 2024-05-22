@@ -17,6 +17,9 @@ export default createStore({
       getters.getUserCount - getters.doneJob.length,
   },
   mutations: {},
-  actions: {},
+  actions: {
+    // changeName: ({ state }) => (state.name = "Update Hsu"),
+    changeNameDync: ({ state }, value) => (state.name = value),
+  },
   modules: {},
 });
