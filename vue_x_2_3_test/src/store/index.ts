@@ -16,7 +16,10 @@ export default createStore({
     undoneJob: (state, getters) =>
       getters.getUserCount - getters.doneJob.length,
   },
-  mutations: {},
+  mutations: {
+    changeNameWithMutation: (state) => (state.name = "Mutation"),
+    changeMutationDync: (state, value) => (state.name = value),
+  },
   actions: {
     // changeName: ({ state }) => (state.name = "Update Hsu"),
     changeNameDync: ({ state }, value) => (state.name = value),

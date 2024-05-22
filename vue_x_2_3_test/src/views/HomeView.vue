@@ -29,6 +29,13 @@
       <button class="btn btn-success" @click="changeTextbtn()">Save</button>
     </div>
     <h1>{{ $store.state.name }}</h1>
+    <h1>Mutation</h1>
+    <button class="btn btn-danger" @click="changeNameWithMutationButton()">
+      Mutation Change Name
+    </button>
+    <button class="btn btn-danger" @click="changeNameMutationDyncBtn()">
+      Mutation Change Name Dync
+    </button>
   </div>
 </template>
 
@@ -60,6 +67,14 @@ export default {
       this.$store.dispatch("changeNameDync", this.changeText);
       console.log(this.$store.state.name);
       this.changeText = "";
+    },
+    changeNameWithMutationButton() {
+      this.$store.commit("changeNameWithMutation");
+      alert(this.$store.state.name);
+    },
+    changeNameMutationDyncBtn() {
+      this.$store.commit("changeMutationDync", "Change with mutation Value");
+      alert(this.$store.state.names);
     },
   },
 };
